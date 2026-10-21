@@ -1,0 +1,25 @@
+/* Brand tokens copied from Restaurant_app/src/app/globals.css — keep in sync by hand. */
+:root {
+  --color-bg: #f3f2f2;
+  --color-text: #201e1d;
+  --color-divider: #dedcda;
+  --color-neutral-100: #eceae8;
+  --color-neutral-200: #e2e0de;
+  --color-neutral-900: #6b6864;
+  --color-accent: #f0a91e;
+  --color-accent-600: #d6900f;
+  --color-accent-700: #a86e0a;
+  --color-accent-100: #fdf1d8;
+  --color-accent-200: #fbe3ae;
+  --font-sans: 'Archivo', Arial, Helvetica, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
