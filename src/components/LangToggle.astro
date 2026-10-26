@@ -1,0 +1,50 @@
+---
+import { homePath, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  label: string;
+}
+
+const { lang, label } = Astro.props;
+const langs: Lang[] = ['tr', 'en'];
+---
+
+<nav class="lang" aria-label={label}>
+  {
+    langs.map((l, i) => (
+      <>
+        {i > 0 && <span aria-hidden="true">|</span>}
+        {l === lang ? (
+          <span aria-current="true">{l.toUpperCase()}</span>
+        ) : (
+          <a href={homePath(l)} hreflang={l} lang={l}>
+            {l.toUpperCase()}
+          </a>
+        )}
+      </>
+    ))
+  }
+</nav>
+
+<style>
+  .lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: var(--color-neutral-900);
+  }
+  .lang [aria-current] {
+    color: var(--color-text);
+    font-weight: 700;
+  }
+  .lang a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0.5rem 0.25rem;
+  }
+  .lang a:hover {
+    color: var(--color-text);
+  }
+</style>

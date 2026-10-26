@@ -1,13 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getDictionary } from '../i18n';
+
+const t = getDictionary('tr');
 ---
 
-<Base
-  lang="tr"
-  title="Masadan — QR Menü ve Masadan Sipariş Sistemi | KKTC"
-  description="Müşterileriniz masadaki QR kodu okutur, menüye bakar ve sipariş verir. Sipariş saniyeler içinde mutfağınızda yazdırılır."
->
-  <main>
-    <h1>Siparişler masadan, doğrudan mutfağa.</h1>
+<Base lang="tr">
+  <main class="container">
+    <h1>{t.hero.headline}</h1>
   </main>
 </Base>

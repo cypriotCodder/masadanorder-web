@@ -1,13 +1,17 @@
 ---
+import { Font } from 'astro:assets';
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileBar from '../components/MobileBar.astro';
+import { getDictionary, type Lang } from '../i18n';
 
 interface Props {
-  lang: 'tr' | 'en';
-  title: string;
-  description: string;
+  lang: Lang;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang } = Astro.props;
+const t = getDictionary(lang);
 const trUrl = new URL('/', Astro.site);
 const enUrl = new URL('/en/', Astro.site);
 ---
@@ -17,8 +21,9 @@ const enUrl = new URL('/en/', Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <Font cssVariable="--font-archivo" preload />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={lang === 'tr' ? trUrl : enUrl} />
     <link rel="alternate" hreflang="tr" href={trUrl} />
@@ -26,6 +31,9 @@ const enUrl = new URL('/en/', Astro.site);
     <link rel="alternate" hreflang="x-default" href={trUrl} />
   </head>
   <body>
+    <Header lang={lang} t={t} />
     <slot />
+    <Footer lang={lang} t={t} />
+    <MobileBar lang={lang} t={t} />
   </body>
 </html>

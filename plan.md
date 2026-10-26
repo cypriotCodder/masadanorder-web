@@ -18,7 +18,7 @@ when the two disagree, the brief wins on content and this file on sequencing.
 | Layout | `src/layouts/Base.astro` — `lang`, title, description, canonical, `hreflang` tr/en/x-default |
 | Tokens | `src/styles/global.css` — copied from `Restaurant_app/src/app/globals.css` |
 | Favicon | `public/favicon.svg` — the app's icon (amber dot on ink) |
-| Font | `Archivo` named in CSS but **not loaded** — falls back to Arial |
+| Font | Archivo variable, self-hosted via Astro `fonts` (local provider, files from `@fontsource-variable/archivo`) |
 | Hosting | Cloudflare Pages planned (build `npm run build`, output `dist`) — not set up |
 
 **Relationship to the app:** the product lives in `/Users/nedim/REPO/Restaurant_app`
@@ -30,16 +30,21 @@ and the icon were copied by hand; if the app's theme changes, update
 
 ## Phase 1 — Foundation
 
-- [ ] Self-host Archivo (woff2, `latin` + `latin-ext` for ç ğ ı İ ö ş ü),
+- [x] Self-host Archivo (woff2, `latin` + `latin-ext` for ç ğ ı İ ö ş ü),
       `font-display: swap`, preload the main weight. No Google Fonts request.
-- [ ] Copy dictionary: `src/i18n/tr.ts` and `src/i18n/en.ts` with the same
+- [x] Copy dictionary: `src/i18n/tr.ts` and `src/i18n/en.ts` with the same
       keys, filled from the brief. Pages pick a dictionary by `lang`, so the
       two locales can't drift structurally.
-- [ ] Header: logo · How it works · Features · FAQ · TR|EN toggle · primary
+- [x] Header: logo · How it works · Features · FAQ · TR|EN toggle · primary
       CTA. The toggle links to the same section in the other locale.
-- [ ] Footer: logo · © 2026 Masadan · Privacy · KKTC · TR | EN.
-- [ ] Sticky mobile bottom bar: [WhatsApp] [Demo talep et], hidden ≥ tablet.
-- [ ] Config constants in one place (`src/config.ts`): WhatsApp number,
+      **Open:** the toggle goes to the other locale's top. Keeping the section
+      needs a few lines of JS (no-JS links can't read the current hash), which
+      conflicts with the zero-JS rule in Acceptance. Section ids are shared
+      across locales (`how-it-works`, `features`, `faq`, `contact`) so either
+      way works.
+- [x] Footer: logo · © 2026 Masadan · Privacy · KKTC · TR | EN.
+- [x] Sticky mobile bottom bar: [WhatsApp] [Demo talep et], hidden ≥ tablet.
+- [x] Config constants in one place (`src/config.ts`): WhatsApp number,
       contact email, demo URL — all placeholders for now.
 
 ## Phase 2 — Sections
