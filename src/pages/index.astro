@@ -1,4 +1,5 @@
 ---
+import Hero from '../components/Hero.astro';
 import Base from '../layouts/Base.astro';
 import { getDictionary } from '../i18n';
 
@@ -6,7 +7,7 @@ const t = getDictionary('tr');
 ---
 
 <Base lang="tr">
-  <main class="container">
-    <h1>{t.hero.headline}</h1>
+  <main>
+    <Hero lang="tr" t={t} />
   </main>
 </Base>

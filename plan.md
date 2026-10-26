@@ -52,8 +52,9 @@ and the icon were copied by hand; if the app's theme changes, update
 In brief order. Each section is one component in `src/components/`, taking
 the dictionary as a prop.
 
-- [ ] 1. Hero — headline, sub, primary CTA + "Try the live demo" →
-      `https://demo.masadanorder.com`, phone mockup
+- [x] 1. Hero — headline, sub, primary CTA + "Try the live demo" →
+      `https://demo.masadanorder.com`, phone mockup (placeholder frame; swap in
+      a real demo-menu screenshot)
 - [ ] 2. Problem → Solution
 - [ ] 3. How it works — 3 steps; slot for the 10–15 s loop video
 - [ ] 4. Features — 6 items

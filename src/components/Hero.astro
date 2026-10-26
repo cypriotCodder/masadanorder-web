@@ -1,0 +1,78 @@
+---
+import { DEMO_URL } from '../config';
+import { homePath, sections, type Dictionary, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  t: Dictionary;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container grid">
+    <div class="copy">
+      <h1>{t.hero.headline}</h1>
+      <p class="sub">{t.hero.sub}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={`${homePath(lang)}#${sections.contact}`}>{t.cta.requestDemo}</a>
+        <a class="btn btn-secondary" href={DEMO_URL} rel="noopener">{t.cta.tryDemo}</a>
+      </div>
+    </div>
+    <!-- Placeholder phone frame; swap the inside for a real demo-menu screenshot. -->
+    <div class="phone" aria-hidden="true">
+      <div class="screen"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: 2.5rem 3rem;
+  }
+  .grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 6vw, 3.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  .sub {
+    margin: 0 0 1.75rem;
+    max-width: 36rem;
+    font-size: 1.125rem;
+    line-height: 1.55;
+    color: var(--color-neutral-900);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .phone {
+    justify-self: center;
+    width: 15rem;
+    aspect-ratio: 9 / 18;
+    padding: 0.6rem;
+    border-radius: 2rem;
+    background: var(--color-text);
+  }
+  .screen {
+    height: 100%;
+    border-radius: 1.5rem;
+    background: linear-gradient(160deg, var(--color-accent-100), var(--color-accent-200));
+  }
+  @media (min-width: 768px) {
+    .hero {
+      padding-block: 4.5rem 5rem;
+    }
+    .grid {
+      grid-template-columns: 1.2fr 1fr;
+    }
+  }
+</style>
