@@ -1,0 +1,67 @@
+---
+import { sections, type Dictionary } from '../i18n';
+
+interface Props {
+  t: Dictionary;
+}
+
+const { t } = Astro.props;
+---
+
+<section id={sections.faq} class="section" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title" class="section-title">{t.faq.title}</h2>
+    <div class="list">
+      {
+        t.faq.items.map((item) => (
+          <details>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .narrow {
+    max-width: 48rem;
+  }
+  .list {
+    border-top: 1px solid var(--color-divider);
+  }
+  details {
+    border-bottom: 1px solid var(--color-divider);
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.125rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    flex: none;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-accent-700);
+  }
+  details[open] summary::after {
+    content: '−';
+  }
+  p {
+    margin: 0 0 1.25rem;
+    line-height: 1.55;
+    color: var(--color-neutral-900);
+  }
+</style>

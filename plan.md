@@ -53,16 +53,23 @@ In brief order. Each section is one component in `src/components/`, taking
 the dictionary as a prop.
 
 - [x] 1. Hero — headline, sub, primary CTA + "Try the live demo" →
-      `https://demo.masadanorder.com`, phone mockup (placeholder frame; swap in
-      a real demo-menu screenshot)
-- [ ] 2. Problem → Solution
-- [ ] 3. How it works — 3 steps; slot for the 10–15 s loop video
-- [ ] 4. Features — 6 items
-- [ ] 5. Social proof — "In use at Heaven Restaurant"; quote slot stays
+      `https://demo.masadanorder.com`, phone mockup (CSS placeholder until
+      the demo screenshot exists)
+- [x] 2. Problem → Solution
+- [x] 3. How it works — 3 steps; slot for the 10–15 s loop video
+- [x] 4. Features — 6 items
+- [x] 5. Social proof — "In use at Heaven Restaurant"; quote slot stays
       empty until Heaven gives permission
-- [ ] 6. Demo CTA band → demo venue
-- [ ] 7. FAQ — native `<details>`/`<summary>`, no JS
-- [ ] 8. Contact — WhatsApp primary, form, email, success message
+- [x] 6. Demo CTA band → demo venue
+- [x] 7. FAQ — native `<details>`/`<summary>`, no JS
+- [x] 8. Contact — WhatsApp primary, form, email, success message
+
+Both locales render the same `src/components/Home.astro`, so their structure
+can't drift. Sections without a visible heading in the brief (problem, social
+proof, demo band) have a visually hidden `<h2>` so the outline stays intact.
+The contact form posts to `/api/demo`, which doesn't exist yet (Phase 3). Its
+success message is shown with CSS `:target` when the handler redirects to
+`#demo-sent`, so it needs no JS.
 
 ## Phase 3 — Contact form and WhatsApp
 

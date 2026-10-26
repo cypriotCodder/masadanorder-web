@@ -25,6 +25,7 @@ const en: Dictionary = {
     sub: 'Guests scan the QR code on their table, browse your menu and order. The ticket prints in your kitchen within seconds — no waiting for a waiter, no mistaken orders.',
   },
   problem: {
+    title: 'Why Masadan?',
     text: "At peak hours, staff can't keep up. Orders get written down wrong. Guests wait just to order.",
     solutionLead: 'With Masadan:',
     solution: 'guests order themselves, your team focuses on service.',
@@ -52,9 +53,11 @@ const en: Dictionary = {
     ],
   },
   proof: {
+    title: 'Customers',
     inUseAt: 'In use at Heaven Restaurant',
   },
   demoBand: {
+    title: 'Live demo',
     text: 'Try it as a guest. Place an order on the demo menu and see how it works.',
   },
   faq: {
@@ -74,6 +77,8 @@ const en: Dictionary = {
   contact: {
     title: 'Contact',
     text: "Request a demo for your venue. We'll get back to you.",
+    whatsappLead: 'Fastest is WhatsApp:',
+    formTitle: 'Or fill in the form',
     fields: {
       name: 'Your name',
       venue: 'Venue name',

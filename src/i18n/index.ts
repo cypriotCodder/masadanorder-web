@@ -29,4 +29,6 @@ export const sections = {
   features: 'features',
   faq: 'faq',
   contact: 'contact',
+  /** :target of the contact form's success message — the form handler redirects here. */
+  demoSent: 'demo-sent',
 } as const;

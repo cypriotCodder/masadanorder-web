@@ -12,38 +12,52 @@ const { lang, t } = Astro.props;
 
 <section class="hero">
   <div class="container grid">
-    <div class="copy">
+    <div>
       <h1>{t.hero.headline}</h1>
       <p class="sub">{t.hero.sub}</p>
       <div class="actions">
         <a class="btn btn-primary" href={`${homePath(lang)}#${sections.contact}`}>{t.cta.requestDemo}</a>
-        <a class="btn btn-secondary" href={DEMO_URL} rel="noopener">{t.cta.tryDemo}</a>
+        <a class="btn btn-secondary" href={DEMO_URL} rel="noopener">{t.cta.tryDemo} →</a>
       </div>
     </div>
-    <!-- Placeholder phone frame; swap the inside for a real demo-menu screenshot. -->
+    <!-- Phone mockup. Placeholder menu until the demo-venue screenshot exists (plan.md → Phase 5). -->
     <div class="phone" aria-hidden="true">
-      <div class="screen"></div>
+      <div class="screen">
+        <div class="bar"></div>
+        {
+          [0, 1, 2, 3].map(() => (
+            <div class="item">
+              <div class="thumb" />
+              <div class="lines">
+                <span />
+                <span />
+              </div>
+            </div>
+          ))
+        }
+        <div class="basket"></div>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .hero {
-    padding-block: 2.5rem 3rem;
+    padding-block: 2.5rem 3.5rem;
   }
   .grid {
     display: grid;
-    gap: 2.5rem;
+    gap: 3rem;
     align-items: center;
   }
   h1 {
     margin: 0 0 1rem;
-    font-size: clamp(2rem, 6vw, 3.25rem);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    font-size: clamp(2.125rem, 7vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
   }
   .sub {
-    margin: 0 0 1.75rem;
+    margin: 0 0 2rem;
     max-width: 36rem;
     font-size: 1.125rem;
     line-height: 1.55;
@@ -54,25 +68,78 @@ const { lang, t } = Astro.props;
     flex-wrap: wrap;
     gap: 0.75rem;
   }
+
   .phone {
     justify-self: center;
-    width: 15rem;
-    aspect-ratio: 9 / 18;
-    padding: 0.6rem;
-    border-radius: 2rem;
+    width: min(15rem, 70vw);
+    aspect-ratio: 9 / 18.5;
+    padding: 0.625rem;
+    border-radius: 2.25rem;
     background: var(--color-text);
+    box-shadow: 0 1.5rem 3rem -1rem rgb(32 30 29 / 0.35);
   }
   .screen {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     height: 100%;
-    border-radius: 1.5rem;
-    background: linear-gradient(160deg, var(--color-accent-100), var(--color-accent-200));
+    padding: 1rem 0.875rem;
+    border-radius: 1.75rem;
+    background: var(--color-bg);
+    overflow: hidden;
   }
+  .bar {
+    height: 0.875rem;
+    width: 55%;
+    margin-bottom: 0.25rem;
+    border-radius: 0.25rem;
+    background: var(--color-text);
+  }
+  .item {
+    display: flex;
+    gap: 0.625rem;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    background: #fff;
+  }
+  .thumb {
+    flex: none;
+    width: 2.75rem;
+    aspect-ratio: 1;
+    border-radius: 0.5rem;
+    background: var(--color-accent-200);
+  }
+  .lines {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.375rem;
+  }
+  .lines span {
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    background: var(--color-neutral-200);
+  }
+  .lines span:last-child {
+    width: 40%;
+    background: var(--color-accent);
+  }
+  .basket {
+    position: absolute;
+    inset: auto 0.875rem 1rem;
+    height: 2.25rem;
+    border-radius: 0.75rem;
+    background: var(--color-accent);
+  }
+
   @media (min-width: 768px) {
     .hero {
-      padding-block: 4.5rem 5rem;
+      padding-block: 4.5rem 5.5rem;
     }
     .grid {
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1.25fr 1fr;
     }
   }
 </style>

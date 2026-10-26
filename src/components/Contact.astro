@@ -1,0 +1,157 @@
+---
+import { CONTACT_EMAIL, whatsappUrl } from '../config';
+import { sections, type Dictionary } from '../i18n';
+
+interface Props {
+  t: Dictionary;
+}
+
+const { t } = Astro.props;
+const f = t.contact.fields;
+---
+
+<section id={sections.contact} class="section contact" aria-labelledby="contact-title">
+  <div class="container grid">
+    <div>
+      <h2 id="contact-title" class="section-title">{t.contact.title}</h2>
+      <p class="lead">{t.contact.text}</p>
+      <p class="label">{t.contact.whatsappLead}</p>
+      <a class="btn btn-primary wa" href={whatsappUrl(t.cta.whatsappMessage)} rel="noopener">
+        {t.cta.whatsapp}
+      </a>
+      <p class="email">
+        {t.contact.emailLabel}: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <!-- Shown via :target when the form handler redirects to #demo-sent (plan.md → Phase 3). -->
+      <p id={sections.demoSent} class="success" role="status">{t.contact.success}</p>
+      <form method="post" action="/api/demo">
+        <h3>{t.contact.formTitle}</h3>
+        <label>
+          {f.name}
+          <input name="name" autocomplete="name" required maxlength="100" />
+        </label>
+        <label>
+          {f.venue}
+          <input name="venue" autocomplete="organization" required maxlength="100" />
+        </label>
+        <div class="row">
+          <label>
+            {f.town}
+            <input name="town" autocomplete="address-level2" required maxlength="60" />
+          </label>
+          <label>
+            {f.tables}
+            <input name="tables" type="number" inputmode="numeric" min="1" max="999" required />
+          </label>
+        </div>
+        <label>
+          {f.phone}
+          <input name="phone" type="tel" autocomplete="tel" required maxlength="30" />
+        </label>
+        <button class="btn btn-primary" type="submit">{t.contact.submit}</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--color-neutral-100);
+  }
+  .grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .lead {
+    margin: -1rem 0 2rem;
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+  .label {
+    margin: 0 0 0.75rem;
+    font-weight: 600;
+  }
+  .wa {
+    min-width: 12rem;
+    justify-content: center;
+  }
+  .email {
+    margin: 1.5rem 0 0;
+    color: var(--color-neutral-900);
+  }
+  .email a {
+    color: var(--color-text);
+  }
+
+  .card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: #fff;
+    border: 1px solid var(--color-divider);
+  }
+  form {
+    display: grid;
+    gap: 1rem;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.125rem;
+  }
+  label {
+    display: grid;
+    gap: 0.375rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+  }
+  input {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font: inherit;
+    font-weight: 400;
+  }
+  input:focus-visible {
+    border-color: var(--color-accent-700);
+  }
+  .row {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2fr 1fr;
+  }
+  button {
+    justify-content: center;
+  }
+
+  .success {
+    display: none;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: var(--color-accent-100);
+    font-weight: 600;
+  }
+  .success:target {
+    display: block;
+  }
+  .success:target + form {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .card {
+      padding: 2rem;
+    }
+  }
+</style>

@@ -1,13 +1,8 @@
 ---
-import Hero from '../../components/Hero.astro';
 import Base from '../../layouts/Base.astro';
-import { getDictionary } from '../../i18n';
-
-const t = getDictionary('en');
+import Home from '../../components/Home.astro';
 ---
 
 <Base lang="en">
-  <main>
-    <Hero lang="en" t={t} />
-  </main>
+  <Home lang="en" />
 </Base>

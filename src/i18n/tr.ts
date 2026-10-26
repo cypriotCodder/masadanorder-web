@@ -24,6 +24,7 @@ const tr = {
     sub: 'Müşterileriniz masadaki QR kodu okutur, menüye bakar ve sipariş verir. Sipariş saniyeler içinde mutfağınızda yazdırılır. Garson beklemek yok, yanlış not alınan sipariş yok.',
   },
   problem: {
+    title: 'Neden Masadan?',
     text: 'Yoğun saatlerde garsonlar yetişemiyor. Siparişler yanlış yazılıyor. Müşteriler sipariş vermek için bekliyor.',
     solutionLead: 'Masadan ile:',
     solution: 'müşteri kendi siparişini verir, ekibiniz servise odaklanır.',
@@ -48,9 +49,11 @@ const tr = {
     ],
   },
   proof: {
+    title: 'Referanslar',
     inUseAt: "Heaven Restaurant'ta kullanılıyor",
   },
   demoBand: {
+    title: 'Canlı demo',
     text: 'Müşteri gibi deneyin. Demo menüden sipariş verin, nasıl çalıştığını görün.',
   },
   faq: {
@@ -73,6 +76,8 @@ const tr = {
   contact: {
     title: 'İletişim',
     text: 'Mekânınız için demo isteyin. Size geri dönelim.',
+    whatsappLead: 'En hızlısı WhatsApp:',
+    formTitle: 'Ya da formu doldurun',
     fields: {
       name: 'Adınız',
       venue: 'Mekân adı',

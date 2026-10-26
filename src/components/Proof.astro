@@ -1,0 +1,40 @@
+---
+import type { Dictionary } from '../i18n';
+
+interface Props {
+  t: Dictionary;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="proof" aria-labelledby="proof-title">
+  <div class="container">
+    <h2 id="proof-title" class="visually-hidden">{t.proof.title}</h2>
+    <p><span class="dot" aria-hidden="true"></span>{t.proof.inUseAt}</p>
+    <!-- Owner quote + table count go here once Heaven gives permission (plan.md → Placeholders). -->
+  </div>
+</section>
+
+<style>
+  .proof {
+    padding-block: 2.5rem;
+    text-align: center;
+  }
+  p {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  .dot {
+    flex: none;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 0.25rem var(--color-accent-200);
+  }
+</style>

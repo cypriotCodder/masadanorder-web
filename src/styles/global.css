@@ -75,3 +75,28 @@ body {
   outline: 2px solid var(--color-accent-700);
   outline-offset: 2px;
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Page sections: shared vertical rhythm and heading size. */
+.section {
+  padding-block: 3.5rem;
+  scroll-margin-top: 1rem;
+}
+.section-title {
+  margin: 0 0 2rem;
+  font-size: clamp(1.625rem, 4.5vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+@media (min-width: 768px) {
+  .section { padding-block: 5rem; }
+}
